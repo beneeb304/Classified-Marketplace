@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel='stylesheet' href='./css/style.css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  </head>
+  <body>
+
+    <h1>{{title}}</h1>
+    <p>{{description}}</p>
+    <div class="row">
+        <div id = "lstItems" class="list-group col-6"></div>
+        <div id ="slcCardListing" class="card mx-auto " style="width: 25%;">
+          <div class="card-body">
+            <h5 id="slcTitle" class="card-title"></h5>
+              <p id="slcDescription" class="card-text"></p>
+              <p id="slcName" class="card-text"></p>
+              <p id="slcCategory" class="card-text"></p>
+              <p id="slcPrice" class="card-text"></p>
+              <p id="slcLocation" class="card-text"></p>
+              <p id="slcContact" class="card-text"></p>
+              <p id="slcRemove" class="card-text"></p>
+            </div>
+        </div>
+    </div><br><br>
+
+    {{!-- Accordion buttons --}}
+    <div id="accordion">
+      <div class="card">
+        <div class="card-header" id="headingOne">
+          <h5 class="mb-0">
+            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Add an item to the listings</button>
+          </h5>
+        </div>
+
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+          <div class="card-body">
+            <div class="jumbotron col-6" id="divFormat" style="width: 50%; float: left;">
+              <h1 class="display-8">List your item!</h1>
+              
+              <hr class="my-4">
+
+              <form>
+              <div class="form-group" id="listingForm">
+                
+                <input type="text" placeholder="Enter a listing title" class="form-control col-4" id="title"><br><br>
+                
+                <textarea  placeholder="Add a listing description" class="form-control " id="description"></textarea><br><br>
+                
+                <input type="text" placeholder="Seller's name" class="form-control col-4" id="name"><br><br>
+                
+                <select class="form-control" id="category">
+                    <option hidden >Item category</option>
+                    <option>Electronics</option>
+                    <option>Furniture</option>
+                    <option>Clothing</option>
+                    <option>Other</option>
+                </select><br><br>
+
+                <div class="row">
+                  <label for="price" class="col-3 col-form-label">Listing price in dollars <b>$.$$</b>:</label>
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                  </div>
+                  <input type='text' pattern='^\d+(?:\.\d{0,2})$' id="price">
+                </div><br><br>
+
+                <div class="row">
+                  <label for="area" class="col-3 col-form-label">Regional listing area <b>x, y</b>:</label>
+                  <input type="text" placeholder="Latitude" class="form-control col-2 mr-2 ml-3" id="lat">
+                  <input type="text" placeholder="Longitude" class="form-control col-2 mr-2 ml-3" id="lon">
+                </div><br><br>
+
+                <input placeholder="Contact" class="form-control col-4" id="contact"><br><br>
+
+                <button type="submit" class="btn btn-dark">Submit listing</button>
+              </div>
+              </form>
+            </div>
+            <div id ="slcCardId" class="card mx-auto " style="width: 25%;"> 
+              <div class="card-body">
+                <h5 id="slcId" class="card-id"></h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingTwo">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Remove an item from the listings</button>
+          </h5>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+          <div class="card-body">
+            <form>
+              <div class="jumbotron col-6" id="divFormat" style="width: 50%; float: left;">
+                <h4>Please enter your item's ID to remove it</h4><br>
+                <div class="row">
+                  <input type="text" placeholder="Listing ID" class="form-control col-4 mr-2" id="removeID">
+                  <button onclick="deleteItem()" type="remove" id="removeButton" class="btn btn-dark">Remove listing</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>  
+    <script src="scripts/index.js"></script>  
+  </body>
+</html>
