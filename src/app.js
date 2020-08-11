@@ -17,8 +17,8 @@ mongoose.connect(process.env.MONGO_URL,{
 
 
 const app = express(); //creates express application and returns an object
-const port=3000; //selects the port to be used
 const port = process.env.PORT; //selects the port to be used
+app.listen(port)
 app.use(express.json())
 
 const viewsPath = path.join(__dirname,'../templates/views')
